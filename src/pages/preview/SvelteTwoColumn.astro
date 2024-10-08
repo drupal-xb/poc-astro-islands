@@ -1,0 +1,17 @@
+---
+import SvelteTwoColumn from '../components/svelte/SvelteTwoColumn.svelte';
+import BasicLayout from '../../layouts/BasicLayout.astro';
+const width = 33;
+---
+<BasicLayout>
+  <SvelteTwoColumn width={width}>
+    <Fragment slot="column_one">
+      <h1>Hello from Svelte Column One!</h1>
+      <h2>❶</h2>
+    </Fragment>
+    <Fragment slot="column_two">
+      <h1>Hello from Svelte Column Two!</h1>
+      <h2>❷</h2>
+    </Fragment>
+  </SvelteTwoColumn>
+</BasicLayout>
