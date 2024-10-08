@@ -1,0 +1,8 @@
+{
+  "verbose": false,
+  "watch": ["dist/server/**/*.mjs", "srv/**/*.ts"],
+  "ext": "ts,json,mjs",
+  "execMap": {
+    "ts": "ts-node-esm"
+  }
+}
