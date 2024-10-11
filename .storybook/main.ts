@@ -1,7 +1,8 @@
 import type { StorybookConfig } from "@storybook/preact-vite";
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx|svelte)"],
+  // stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx|svelte)"],
+  stories: ['../src/components/SvelteCounter/SvelteCounter.stories.js'],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -14,7 +15,12 @@ const config: StorybookConfig = {
     options: {},
   },
   core: {
-    builder: '@storybook/builder-vite',
+    builder: {
+      name: '@storybook/builder-vite',
+      options: {
+        viteConfigPath: '.storybook/vite.config.js',
+      },
+    },
   },
 };
 export default config;
