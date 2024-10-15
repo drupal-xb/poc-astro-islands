@@ -1,20 +1,41 @@
 import type { StorybookConfig } from "@storybook/preact-vite";
+const { mergeConfig } = require('vite');
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx|svelte)"],
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)","../src/**/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
-    "@storybook/addon-svelte-csf"
   ],
   framework: {
-    name: "@storybook/svelte-vite",
+    name: "@storybook/preact-vite",
     options: {},
   },
   core: {
-    builder: '@storybook/builder-vite',
+    builder: '@storybook/builder-vite'
+  },
+  async viteFinal(config, { configType }) {
+    // Return the altered config
+    return mergeConfig(config, {
+      css: {
+        postcss: {
+          plugins: [require('tailwindcss'), require('autoprefixer')],
+        },
+      },
+      resolve: {
+        alias: {
+          react: 'preact/compat',
+          'react-dom/test-utils': 'preact/test-utils',
+          'react-dom': 'preact/compat', // Must be below test-utils
+        },
+      },
+      esbuild: {
+        jsxFactory: 'h',
+        jsxFragment: 'Fragment',
+      },
+    });
   },
 };
 export default config;
