@@ -10,11 +10,20 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
   ],
   framework: {
-    name: "@storybook/preact-vite",
+    // name: "@storybook/preact-vite",
+    name: "@storybook/svelte-vite",
     options: {},
   },
+  // core: {
+  //   builder: '@storybook/builder-vite'
+  // },
   core: {
-    builder: '@storybook/builder-vite'
+    builder: {
+      name: '@storybook/builder-vite',
+      options: {
+        viteConfigPath: '.storybook/vite.config.js',
+      },
+    },
   },
   async viteFinal(config, { configType }) {
     // Return the altered config
