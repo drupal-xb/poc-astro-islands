@@ -10,8 +10,15 @@
     "preview": "astro preview",
     "deploy": "node uploadToDrupal.js",
     "astro": "astro",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook-svelte": "npx storybook dev -p 6006 -c src/components/svelte",
+    "storybook-preact": "npx storybook dev -p 6007 -c src/components/preact",
+    "storybook-main": "npx storybook dev -p 6008 -c .storybook",
+    "storybook": "concurrently \"npm run storybook-svelte\" \"npm run storybook-preact\" \"npm run storybook-main\"",
+    "build-storybook-svelte": "npx storybook build -c src/components/svelte -o build-storybook-svelte",
+    "build-storybook-preact": "npx storybook build -c src/components/preact -o build-storybook-preact",
+    "build-storybook-main": "npx storybook build -c .storybook -o build-storybook-main",
+    "build-storybook": "concurrently \"npm run build-storybook-svelte\" \"npm run build-storybook-preact\" \"npm run build-storybook-main\""
+    
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
@@ -40,6 +47,7 @@
     "@storybook/test": "^8.3.5",
     "@sveltejs/vite-plugin-svelte": "^3.1.2",
     "autoprefixer": "^10.4.20",
+    "concurrently": "^9.0.1",
     "postcss": "^8.4.47",
     "storybook": "^8.3.5",
     "svelte-preprocess": "^6.0.3",

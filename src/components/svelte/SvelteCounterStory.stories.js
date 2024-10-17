@@ -1,7 +1,7 @@
 import SvelteCounter from './SvelteCounter.svelte';
 
 export default {
-  title: 'Example/SvelteCounter',
+  title: 'SvelteCounter',
   component: SvelteCounter,
 };
 

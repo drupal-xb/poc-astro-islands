@@ -2,7 +2,7 @@ import PreactCounter from './PreactCounter';
 import { h } from 'preact';
 
 export default {
-  title: 'Example/PreactCounter',
+  title: 'PreactCounter',
   component: PreactCounter,
 };
 
