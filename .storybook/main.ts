@@ -2,7 +2,7 @@ import type { StorybookConfig } from "@storybook/preact-vite";
 const { mergeConfig } = require('vite');
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ["../src/**/*.mdx"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -24,9 +24,6 @@ const config: StorybookConfig = {
     name: "@storybook/svelte-vite",
     options: {},
   },
-  // core: {
-  //   builder: '@storybook/builder-vite'
-  // },
   core: {
     builder: {
       name: '@storybook/builder-vite',
